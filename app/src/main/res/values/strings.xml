@@ -8,4 +8,5 @@
     <string name="please_enter_start">Please enter start</string>
     <string name="waiting">Pending</string>
     <string name="_0">0 %</string>
+    <string name="milisText">Введите секунды</string>
 </resources>

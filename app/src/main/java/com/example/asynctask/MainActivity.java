@@ -1,25 +1,29 @@
 package com.example.asynctask;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     TextView textStatus, textPercent;
     ProgressBar pBar;
     Button start, cancel;
+    EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        editText = findViewById(R.id.editText);
         textStatus = findViewById(R.id.statusText);
         textPercent = findViewById(R.id.percent);
         pBar = findViewById(R.id.pBar);
@@ -33,17 +37,17 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    class MyAsyncTask extends AsyncTask<Void, Integer, Void>{
+    class MyAsyncTask extends AsyncTask<Void, Integer, Void> {
         @Override
-        protected Void doInBackground(Void... params) {
+        protected Void doInBackground(Void... params) throws NullPointerException {
             int progress = pBar.getMax();
             for (int i = 0; i < progress; i++) {
 
-                Log.d("TAG", "doInBackground");
-
                 try {
-                    Thread.sleep(300);
-                } catch (InterruptedException e) {
+                    long millis = Long.parseLong(editText.getText().toString()) / 1000;
+                    Log.d("TAG", "try " + millis);
+                    Thread.sleep(millis);
+                } catch (InterruptedException | NullPointerException e) {
                     e.printStackTrace();
                 }
 
@@ -70,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
             textStatus.setText(getResources().getText(R.string.running));
 
             if (progress == 100){
+                editText.setVisibility(View.VISIBLE);
                 res = "0 %";
                 textStatus.setText(getResources().getText(R.string.finished));
                 textPercent.setText(res);
@@ -86,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
+            editText.setVisibility(View.GONE);
+            editText = findViewById(R.id.editText);
             Log.d("TAG", "onPreExecute");
             super.onPreExecute();
         }

@@ -16,6 +16,16 @@
         android:layout_height="wrap_content"
         android:text="@string/waiting" />
 
+    <EditText
+        android:id="@+id/editText"
+        android:textAlignment="center"
+        android:inputType="number"
+        android:hint="@string/milisText"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="" />
+
     <ProgressBar
         android:id="@+id/pBar"
         android:background="#FBFBC5"
