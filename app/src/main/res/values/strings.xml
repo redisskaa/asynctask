@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">asynctask</string>
+    <string name="cancel">cancel</string>
+    <string name="start">start</string>
+    <string name="percent"> %</string>
+    <string name="running">Running</string>
+    <string name="finished">Finished</string>
+    <string name="please_enter_start">Please enter start</string>
+    <string name="waiting">Pending</string>
+    <string name="_0">0 %</string>
+</resources>
