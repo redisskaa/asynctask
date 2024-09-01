@@ -45,9 +45,11 @@ public class MainActivity extends AppCompatActivity {
             for (int i = 0; i < progress; i++) {
 
                 try {
+
                     long millis = Long.parseLong(editText.getText().toString());
                     Log.d("TAG", "try " + millis);
                     Thread.sleep(millis / 100);
+
                 } catch (InterruptedException | NullPointerException e) {
                     e.printStackTrace();
                 }
